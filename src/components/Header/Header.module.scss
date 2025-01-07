@@ -1,0 +1,38 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+@use '../../styles/typography' as fonts;
+
+* {
+    font-family: fonts.$current-font;
+}
+
+.navbar {
+    @include mixins.flex-column(center, center, 45px);
+
+    padding: 32px 24px;
+}
+
+.mode_list {
+    @include mixins.flex-row(center, space-evenly, 0px);
+    @extend .body-1;
+
+    width: 100%;
+    color: vars.$light-purple-1;
+    background-color: vars.$dark-blue-2;
+    border-radius: 31px;
+}
+
+.mode_item {
+    padding: 18px 23px;
+    width: 100%;
+    height: 100%;
+    opacity: 40%;
+    text-align: center;
+}
+
+.mode_item.active {
+    color: vars.$dark-blue-1;
+    opacity: 100%;
+    background-color: vars.$red;
+    border-radius: 26px;
+}

@@ -1,0 +1,64 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+@use '../../styles/typography' as fonts;
+
+.container {
+    width: 332px;
+    height: 332px;
+    margin: 48px auto;
+    position: relative;
+    background: linear-gradient(#0E112A 0%, #2E325A 100%);
+    border-radius: 50%;
+    padding: 16px;
+    box-shadow: -50px -50px 100px #272C5A, 50px 50px 100px #121530;
+
+}
+
+.circle_container {
+    background-color: #161932;
+    border-radius: 50%;
+    padding: 4px;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); /* Rotate to make the circle start from the top */
+}
+
+.background_circle {
+    fill: #161932;
+    stroke: #161932;
+    stroke-width: 4px;
+}
+
+.progress_circle {
+    fill: none;
+    stroke: #ff6f61;
+    stroke-width: 4px;
+    stroke-linecap: round; /* Makes the tip of the circle rounded */
+    transition: stroke-dashoffset 1s linear;
+}
+
+
+.content {
+    @include mixins.flex-column(center, center, 5px);
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for offset caused by absolute positioning */
+    
+    width: 70%; /* Slightly smaller than the container */
+    height: 70%;
+    border-radius: 50%;
+    background-color: vars.$dark-blue-2;
+}
+
+.timer {
+    @extend .h1;
+    color: vars.$light-purple-1;
+}
+
+.btn {
+    @extend .h3;
+    background-color: transparent;
+    border: none;
+    color: vars.$light-purple-1;
+}
