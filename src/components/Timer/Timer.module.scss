@@ -3,9 +3,9 @@
 @use '../../styles/typography' as fonts;
 
 .container {
-    width: 332px;
-    height: 332px;
-    margin: 48px auto;
+    width: 300px;
+    height: 300px;
+    margin: auto;
     position: relative;
     background: linear-gradient(#0E112A 0%, #2E325A 100%);
     border-radius: 50%;
@@ -18,8 +18,8 @@
     background-color: #161932;
     border-radius: 50%;
     padding: 4px;
-    width: 100%;
-    height: 100%;
+    width: 267.8px;
+    height: 267.8px;
     transform: rotate(-90deg); /* Rotate to make the circle start from the top */
 }
 
@@ -37,7 +37,6 @@
     transition: stroke-dashoffset 1s linear;
 }
 
-
 .content {
     @include mixins.flex-column(center, center, 5px);
     position: absolute;
@@ -45,8 +44,8 @@
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust for offset caused by absolute positioning */
     
-    width: 70%; /* Slightly smaller than the container */
-    height: 70%;
+    width: 75%; /* Slightly smaller than the container */
+    height: 75%;
     border-radius: 50%;
     background-color: vars.$dark-blue-2;
 }

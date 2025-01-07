@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Timer.module.scss"
 
 export default function Timer () {
-    const tempTime = 30;
+    const tempTime = 18;
     const [timeLeft, setTimeLeft] = React.useState(60 * tempTime); 
     const [isPaused, setIsPaused] = React.useState(false);
 
