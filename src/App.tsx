@@ -53,10 +53,6 @@ function App() {
   const [colorSettings, setColorSettings] = React.useState<ColorType>(ColorType.RED);
 
   React.useEffect(() => {
-    console.log({ timeSettings })
-  }, [timeSettings])
-
-  React.useEffect(() => {
     document.documentElement.style.setProperty('--primary-font', FontValues[fontSettings]);
     document.documentElement.style.setProperty('--primary-color', ColorValues[colorSettings]);
   }, [fontSettings, colorSettings])

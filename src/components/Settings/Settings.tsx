@@ -49,7 +49,7 @@ export default function Settings (props: SettingsProps) {
             <div className={styles.time_settings}>
                 {Object.entries(tempTimeSettings).map(([key, value]) => {
                     return (
-                        <div className={styles.time_row}>
+                        <div className={styles.time_row} key={key}>
                             <div className={styles.time_label}>{key.replace("_"," ")}</div>
                             <div className={styles.input_container}>
                                 <input 
@@ -93,6 +93,7 @@ export default function Settings (props: SettingsProps) {
                         <div 
                             className={`${styles.font_item} ${styles[font]} ${activeStyle}`}
                             onClick={() => setTempFontSettings(font)}
+                            key={font}
                         >
                             Aa
                         </div>
@@ -113,6 +114,7 @@ export default function Settings (props: SettingsProps) {
                         <div 
                             className={`${styles.color_item} ${styles[color]}`}
                             onClick={() => setTempColorSettings(color)}
+                            key={color}
                         >
                             {content}
                         </div>
