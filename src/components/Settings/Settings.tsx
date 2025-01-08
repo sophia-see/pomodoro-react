@@ -1,12 +1,9 @@
 import styles from './Settings.module.scss';
 import settingsIcon from '../../assets/icon-settings.svg';
 import closeIcon from '../../assets/icon-close.svg';
-import arrowUpIcon from '../../assets/icon-arrow-up.svg';
-import arrowDownIcon from '../../assets/icon-arrow-down.svg';
 
 import { ColorType, FontType, SettingsType } from '../../App';
 import React from 'react';
-import ArrowUpIcon from '../InputArrow/ArrowUpIcon';
 import InputArrow from '../InputArrow';
 
 interface SettingsProps {
