@@ -20,6 +20,9 @@
     color: vars.$light-purple-1;
     background-color: vars.$dark-blue-2;
     border-radius: 31px;
+    max-width: 373px;
+
+    z-index: 10;
 }
 
 .mode_item {

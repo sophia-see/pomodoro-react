@@ -46,8 +46,8 @@ export default function Settings (props: SettingsProps) {
     }
 
     const renderTimeSettings = (
-        <div className={styles.setting_container}>
-            <div className={styles.setting_title}>time (minutes)</div>
+        <div className={`${styles.setting_container}  ${styles.time}`}>
+            <div className={`${styles.setting_title}`}>time (minutes)</div>
             <div className={styles.time_settings}>
                 {Object.entries(tempTimeSettings).map(([key, value]) => {
                     return (
