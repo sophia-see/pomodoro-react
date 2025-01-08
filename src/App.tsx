@@ -53,8 +53,17 @@ function App() {
   const [colorSettings, setColorSettings] = React.useState<ColorType>(ColorType.RED);
 
   React.useEffect(() => {
+    const isMono = fontSettings == FontType.MONO;
+    const isSans = fontSettings == FontType.SANS;
+
+    const timerWeight = isMono ? "regular" : "bold";
+    const timerSpace = isMono ? "-10px" : isSans ? "-4px" : "0px";
+    
     document.documentElement.style.setProperty('--primary-font', FontValues[fontSettings]);
     document.documentElement.style.setProperty('--primary-color', ColorValues[colorSettings]);
+
+    document.documentElement.style.setProperty('--timer-weight', timerWeight);
+    document.documentElement.style.setProperty('--timer-space', timerSpace);
   }, [fontSettings, colorSettings])
 
   return (

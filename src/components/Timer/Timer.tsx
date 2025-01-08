@@ -13,10 +13,14 @@ export default function Timer ({currentMode, timeSettings}: TimerProps) {
     const [isStarted, setIsStarted] = React.useState(false);
     const [isPaused, setIsPaused] = React.useState(true);
 
-    React.useEffect(() => {
+    const resetTimer = () => {
         setIsStarted(false);
         setIsPaused(true);
         setTimeLeft(60*time);
+    }
+
+    React.useEffect(() => {
+        resetTimer();
     }, [currentMode, timeSettings])
 
     React.useEffect(() => {
@@ -25,6 +29,9 @@ export default function Timer ({currentMode, timeSettings}: TimerProps) {
             setTimeLeft((prevTime) => prevTime - 1);
             }, 1000);
             return () => clearInterval(interval);
+        }
+        if (timeLeft == 0) {
+            resetTimer();
         }
     }, [isPaused, timeLeft]);
 
@@ -38,7 +45,6 @@ export default function Timer ({currentMode, timeSettings}: TimerProps) {
     return (
         <div className={styles.container}>
             <svg className={styles.circle_container} viewBox="0 0 100 100">
-                <circle className={styles.background_circle} cx="50" cy="50" r="45" />
                 <circle
                     className={styles.progress_circle}
                     cx="50"

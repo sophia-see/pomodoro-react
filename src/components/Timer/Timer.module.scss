@@ -3,8 +3,9 @@
 @use '../../styles/typography' as fonts;
 
 .container {
-    width: 300px;
-    height: 300px;
+    width: 90%;
+    max-width: 480px;
+    aspect-ratio: 1/1;
     margin: auto;
     position: relative;
     background: linear-gradient(#0E112A 0%, #2E325A 100%);
@@ -15,18 +16,10 @@
 }
 
 .circle_container {
-    background-color: #161932;
+    background-color: vars.$dark-blue-2;
     border-radius: 50%;
     padding: 4px;
-    width: 267.8px;
-    height: 267.8px;
     transform: rotate(-90deg); /* Rotate to make the circle start from the top */
-}
-
-.background_circle {
-    fill: #161932;
-    stroke: #161932;
-    stroke-width: 4px;
 }
 
 .progress_circle {
@@ -47,12 +40,15 @@
     width: 75%; /* Slightly smaller than the container */
     height: 75%;
     border-radius: 50%;
-    background-color: vars.$dark-blue-2;
 }
 
 .timer {
     @extend .h1;
     color: vars.$light-purple-1;
+    font-weight: var(--timer-weight);
+    letter-spacing: var(--timer-space);
+    width: 100%;
+    text-align: center;
 }
 
 .btn {
