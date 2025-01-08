@@ -13,13 +13,13 @@ export default function Header ({ currentMode, setCurrentMode }: HeaderProps) {
                 <img src={logo} alt="pomodoro logo" />
                 <ul className={styles.mode_list}>
                     {Object.keys(Mode).map((mode) => {
-                        const isActive = currentMode === mode;
+                        const isActive = currentMode === mode as unknown as Mode;
 
                         return (
                             <li
                                 key={mode}
                                 className={`${styles.mode_item} ${isActive ? styles.active : ''}`}
-                                onClick={() => setCurrentMode(mode as Mode)}
+                                onClick={() => setCurrentMode(mode as unknown as Mode)}
                             >
                                 {mode.replace('_', ' ')}
                             </li>
