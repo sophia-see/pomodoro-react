@@ -30,17 +30,24 @@ export default function Settings (props: SettingsProps) {
     const [tempFontSettings, setTempFontSettings] = React.useState(fontSettings);
     const [tempColorSettings, setTempColorSettings] = React.useState(colorSettings);
 
+    const onResetTemps = () => {
+        setTempTimeSettings(timeSettings);
+        setTempColorSettings(colorSettings);
+        setTempFontSettings(fontSettings);
+    }
+
     const onApplySettings = () => {
         setTimeSettings(tempTimeSettings);
         setFontSettings(tempFontSettings);
         setColorSettings(tempColorSettings);
+        setIsModalOpened(false);
     }
 
     const renderTimeSettings = (
         <div className={styles.setting_container}>
             <div className={styles.setting_title}>time (minutes)</div>
             <div className={styles.time_settings}>
-                {Object.entries(timeSettings).map(([key, value]) => {
+                {Object.entries(tempTimeSettings).map(([key, value]) => {
                     return (
                         <div className={styles.time_row}>
                             <div className={styles.time_label}>{key.replace("_"," ")}</div>
@@ -49,8 +56,15 @@ export default function Settings (props: SettingsProps) {
                                     type="number" 
                                     name={key} 
                                     id={key} 
-                                    defaultValue={value} 
+                                    value={value} 
                                     className={styles.time_value}
+                                    onChange={(e) => {
+                                        console.log({num: e.target.value})
+                                        setTempTimeSettings((curr) => ({
+                                            ...curr,
+                                            [key]: e.target.value
+                                        }))
+                                    }}
                                 />
                                 <div className={styles.buttons}>
                                     <button className={styles.input_btn}>
@@ -111,7 +125,15 @@ export default function Settings (props: SettingsProps) {
     return (
         <>
             <div className={styles.container}>
-                <img className={styles.settings_icon} src={settingsIcon} alt="settings icon" onClick={() => setIsModalOpened(true)}/>
+                <img 
+                    className={styles.settings_icon} 
+                    src={settingsIcon} 
+                    alt="settings icon" 
+                    onClick={() => {
+                        setIsModalOpened(true);
+                        onResetTemps();
+                    }}
+                />
             </div>    
             <div className={`${styles.modal_container} ${isModalOpened ? "" : styles.hidden}`}>
                 <div className={styles.modal}>
@@ -130,6 +152,5 @@ export default function Settings (props: SettingsProps) {
                 </div>
             </div>    
         </>
-
     )
 }

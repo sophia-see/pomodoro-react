@@ -5,9 +5,9 @@ import Timer from './components/Timer/Timer';
 import Settings from './components/Settings/Settings';
 
 export enum Mode {
-  pomodoro = "pomodoro",
-  short_break = "short break",
-  long_break = "long break",
+  pomodoro = "pomodoro" as any,
+  short_break = "short break" as any,
+  long_break = "long break" as any,
 }
 
 export type SettingsType = {
@@ -53,6 +53,10 @@ function App() {
   const [colorSettings, setColorSettings] = React.useState<ColorType>(ColorType.RED);
 
   React.useEffect(() => {
+    console.log({ timeSettings })
+  }, [timeSettings])
+
+  React.useEffect(() => {
     document.documentElement.style.setProperty('--primary-font', FontValues[fontSettings]);
     document.documentElement.style.setProperty('--primary-color', ColorValues[colorSettings]);
   }, [fontSettings, colorSettings])
@@ -60,7 +64,7 @@ function App() {
   return (
     <>
       <Header currentMode={currentMode} setCurrentMode={setCurrentMode}/>
-      <Timer />
+      <Timer currentMode={currentMode} timeSettings={timeSettings}/>
       <Settings 
         timeSettings={timeSettings} 
         setTimeSettings={setTimeSettings}
