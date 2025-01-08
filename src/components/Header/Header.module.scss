@@ -3,7 +3,7 @@
 @use '../../styles/typography' as fonts;
 
 * {
-    font-family: fonts.$current-font;
+    font-family: var(--primary-font);
 }
 
 .navbar {
@@ -33,6 +33,6 @@
 .mode_item.active {
     color: vars.$dark-blue-1;
     opacity: 100%;
-    background-color: vars.$red;
+    background-color: var(--primary-color);
     border-radius: 26px;
 }

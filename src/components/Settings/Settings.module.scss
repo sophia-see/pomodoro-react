@@ -1,3 +1,7 @@
+@use '../../styles/variables.scss' as vars;
+@use '../../styles/mixins.scss' as mixins;
+@use '../../styles/typography.scss' as fonts;
+
 .container {
     margin: auto;
 }
@@ -5,4 +9,217 @@
 .settings_icon {
     width: 28px;
     height: 28px;
+}
+
+.modal_container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background-color: hsla(0, 0%, 0%, 85%);
+    z-index: 2;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.modal_container:not(.hidden) {
+    @include mixins.flex-column(center, center);
+} 
+
+.modal {
+    @include mixins.flex-column(start, start);
+    width: 90%;
+    height: fit-content;
+    background-color: vars.$white;
+    border-radius: 15px;
+    position: relative;
+}
+
+.modal_title {
+    @include mixins.flex-row(center, space-between);
+    width: 100%;
+    padding: 24px;
+    border-bottom: 1px solid vars.$gray;
+}
+
+.settings_title {
+    @extend .h2;
+
+}
+
+.close_icon {
+    width: 14px;
+    height: 14px;
+}
+
+.modal_contents {
+    width: 100%;
+    padding: 0 24px;
+}
+
+.setting_container {
+    @include mixins.flex-column(start, start, 18px);
+
+    width: 100%;
+    border-bottom: 1px solid vars.$gray;
+    padding: 24px 0;
+
+    &.no_divider {
+        border-bottom: none;
+        padding-bottom: 60px;
+    }
+}
+
+.setting_title {
+    @extend .h4;
+    margin: auto;
+}
+
+.time_settings {
+    @include mixins.flex-column(start, start, 8px);
+    width: 100%;
+}
+
+.time_row {
+    @include mixins.flex-row(center, space-between);
+    width: 100%;
+}
+
+.input_container {
+    position: relative;
+    width: 140px;
+}
+
+.time_label {
+    @extend .body-1;
+    color: vars.$dark-blue-1;
+    opacity: 40%;
+}
+
+.time_value {
+    -webkit-appearance: none; /* Restores spin buttons in WebKit browsers */
+    -moz-appearance: textfield; /* Restores spin buttons in Firefox */
+    appearance: textfield;
+    position: relative;
+    outline: none;
+    border: none;
+
+    width: 100%;
+    background-color: vars.$light-purple-2;
+    padding: 16px;
+    border-radius: 10px;
+
+    font-weight: bold;
+    font-style: 14px;
+    line-height: auto;
+    letter-spacing: 0px;
+}
+
+.buttons {
+    @include mixins.flex-column(start, center, 0);
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    margin: auto 16px;
+}
+
+.input_btn {
+    width: 100%;
+    height: fit-content;
+
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.input_btn img {
+    width: 12px;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+}
+
+.row_setting {
+    @include mixins.flex-row(start, center, 16px);
+
+    width: 100%;
+}
+
+.font_item {
+    @include mixins.flex-row(center, center);
+
+    width: 40px;
+    height: 40px;
+    color: vars.$dark-blue-1;
+    background-color: vars.$gray;
+    border-radius: 50%;
+    font-weight: bold;
+
+    &.sans {
+        font-family: fonts.$sans;
+    }
+
+    &.serif {
+        font-family: fonts.$serif;
+    }
+
+    &.mono {
+        font-family: fonts.$mono;
+    }
+
+    &.active {
+        background-color: vars.$dark-blue-1;
+        color: vars.$white;
+    }
+}
+
+.color_item {
+    @include mixins.flex-row(center, center);
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    &.red {
+        background-color: vars.$red;
+    }
+
+    &.blue {
+        background-color: vars.$blue;
+    }
+
+    &.purple {
+        background-color: vars.$purple;
+    }
+}
+
+.btn_container {
+    @include mixins.flex-row(center, center);
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+}
+
+.apply_btn {
+    font-weight: bold;
+    font-family: var(--primary-font);
+    font-size: 16px;
+    background-color: var(--primary-color);
+    color: vars.$dark-blue-1;
+    border: none;
+    padding: 17px 47px;
+    border-radius: 26.5px;
 }

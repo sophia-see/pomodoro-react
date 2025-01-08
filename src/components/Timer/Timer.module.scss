@@ -31,7 +31,7 @@
 
 .progress_circle {
     fill: none;
-    stroke: #ff6f61;
+    stroke: var(--primary-color);
     stroke-width: 4px;
     stroke-linecap: round; /* Makes the tip of the circle rounded */
     transition: stroke-dashoffset 1s linear;

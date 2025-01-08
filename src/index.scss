@@ -1,5 +1,10 @@
 @use 'styles/variables' as vars;
 
+:root {
+    --primary-color: hsl(0, 91%, 71%);
+    --primary-font: "Kumbh Sans", sans-serif;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -22,6 +27,13 @@ ul, li {
   margin: 0;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0; /* Optional, remove default margin */
+}
+
 #root {
   padding: 0;
   margin: 0;
@@ -30,5 +42,6 @@ ul, li {
   flex-direction: column;
   background-color: vars.$dark-blue-1;
 }
+
 
 
