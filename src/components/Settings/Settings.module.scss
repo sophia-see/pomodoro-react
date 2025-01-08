@@ -9,6 +9,11 @@
 .settings_icon {
     width: 28px;
     height: 28px;
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(200%);
+    }
 }
 
 .modal_container {
@@ -142,13 +147,20 @@
     padding: 0;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+
+
 }
 
-.input_btn img {
+.btn_control {
     width: 12px;
     height: 100%;
     margin: auto;
     padding: 0;
+
+    &:hover {
+        filter: brightness(0.1) contrast(20) grayscale(50%);
+    }
 }
 
 .row_setting {
@@ -166,6 +178,7 @@
     background-color: vars.$gray;
     border-radius: 50%;
     font-weight: bold;
+    cursor: pointer;
 
     &.sans {
         font-family: fonts.$sans;
@@ -191,6 +204,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    cursor: pointer;
 
     &.red {
         background-color: vars.$red;
@@ -205,6 +219,18 @@
     }
 }
 
+.item {
+    @include mixins.flex-row(center, center);
+    width: 50px;
+    height: 50px;
+
+    &.chosen {
+        border: 1px solid vars.$gray;
+        background-color: vars.$white;
+        border-radius: 50%;
+    }
+}
+
 .btn_container {
     @include mixins.flex-row(center, center);
     position: absolute;
@@ -214,12 +240,19 @@
 }
 
 .apply_btn {
+    
     font-weight: bold;
     font-family: var(--primary-font);
     font-size: 16px;
-    background-color: var(--primary-color);
+    background-color: hsla(var(--primary-color), var(--primary-color-opacity));
     color: vars.$dark-blue-1;
     border: none;
     padding: 17px 47px;
     border-radius: 26.5px;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.apply_btn:hover {
+    filter: brightness(120%); /* Lightens the background color by 20% */
 }

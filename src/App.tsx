@@ -35,9 +35,9 @@ export enum ColorType {
 }
 
 const ColorValues = {
-  red: "#F87070",
-  blue: "#70F3F8",
-  purple: "#D881F8"
+  red: "0, 91%, 71%",
+  blue: "182, 91%, 71%",
+  purple: "284, 89%, 74%"
 }
 
 const FontValues = {

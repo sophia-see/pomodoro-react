@@ -24,7 +24,7 @@
 
 .progress_circle {
     fill: none;
-    stroke: var(--primary-color);
+    stroke: hsla(var(--primary-color), 1);
     stroke-width: 4px;
     stroke-linecap: round; /* Makes the tip of the circle rounded */
     transition: stroke-dashoffset 1s linear;
@@ -49,6 +49,7 @@
     letter-spacing: var(--timer-space);
     width: 100%;
     text-align: center;
+    pointer-events: none;
 }
 
 .btn {
@@ -56,4 +57,9 @@
     background-color: transparent;
     border: none;
     color: vars.$light-purple-1;
+    cursor: pointer;
+
+    &:hover {
+        color: hsla(var(--primary-color), 1);
+    }
 }

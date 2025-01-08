@@ -6,6 +6,8 @@ import arrowDownIcon from '../../assets/icon-arrow-down.svg';
 
 import { ColorType, FontType, SettingsType } from '../../App';
 import React from 'react';
+import ArrowUpIcon from '../InputArrow/ArrowUpIcon';
+import InputArrow from '../InputArrow';
 
 interface SettingsProps {
     timeSettings: SettingsType;
@@ -67,11 +69,23 @@ export default function Settings (props: SettingsProps) {
                                     }}
                                 />
                                 <div className={styles.buttons}>
-                                    <button className={styles.input_btn}>
-                                        <img src={arrowUpIcon} alt="up icon" />
+                                    <button 
+                                        className={styles.input_btn} 
+                                        onClick={() => setTempTimeSettings((curr) => ({
+                                            ...curr,
+                                            [key]: value + 1
+                                        }))}
+                                    >
+                                        <InputArrow.Up />
                                     </button>
-                                    <button className={styles.input_btn}>
-                                        <img src={arrowDownIcon} alt="down icon" />
+                                    <button 
+                                        className={styles.input_btn} 
+                                        onClick={() => setTempTimeSettings((curr) => ({
+                                            ...curr,
+                                            [key]: value - 1
+                                        }))}
+                                    >
+                                        <InputArrow.Down />
                                     </button>
                                 </div>
                             </div>
@@ -87,16 +101,22 @@ export default function Settings (props: SettingsProps) {
             <div className={styles.setting_title}>font</div>
             <div className={styles.row_setting}>
                 {Object.values(FontType).map(font => {
-                    const isActive = tempFontSettings == font;
+                    const isActive = fontSettings == font;
                     const activeStyle = isActive ? styles.active : "";
+                    const isChosen = !isActive && tempFontSettings == font;
+                    const chosenStyle = isChosen ? styles.chosen : "";
+
                     return (
-                        <div 
-                            className={`${styles.font_item} ${styles[font]} ${activeStyle}`}
-                            onClick={() => setTempFontSettings(font)}
-                            key={font}
-                        >
-                            Aa
+                        <div className={`${styles.item} ${chosenStyle}`}>
+                            <div 
+                                className={`${styles.font_item} ${styles[font]} ${activeStyle}`}
+                                onClick={() => setTempFontSettings(font)}
+                                key={font}
+                            >
+                                Aa
+                            </div>
                         </div>
+                        
                     )
                 })}
             </div>
@@ -108,15 +128,20 @@ export default function Settings (props: SettingsProps) {
             <div className={styles.setting_title}>color</div>
             <div className={styles.row_setting}>
                 {Object.values(ColorType).map(color => {
-                    const isActive = tempColorSettings == color;
+                    const isActive = colorSettings == color;
                     const content = isActive ? <span>&#10003;</span> : "";
+                    const isChosen = !isActive && tempColorSettings == color;
+                    const chosenStyle = isChosen ? styles.chosen : "";
+
                     return (
-                        <div 
-                            className={`${styles.color_item} ${styles[color]}`}
-                            onClick={() => setTempColorSettings(color)}
-                            key={color}
-                        >
-                            {content}
+                        <div className={`${styles.item} ${chosenStyle}`}>
+                            <div 
+                                className={`${styles.color_item} ${styles[color]}`}
+                                onClick={() => setTempColorSettings(color)}
+                                key={color}
+                            >
+                                {content}
+                            </div>
                         </div>
                     )
                 })}

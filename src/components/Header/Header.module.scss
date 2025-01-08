@@ -28,11 +28,16 @@
     height: 100%;
     opacity: 40%;
     text-align: center;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 100%;
+    }
 }
 
 .mode_item.active {
     color: vars.$dark-blue-1;
     opacity: 100%;
-    background-color: var(--primary-color);
+    background-color: hsla(var(--primary-color), 1);
     border-radius: 26px;
 }
